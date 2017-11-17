@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context="com.example.asus_pc.monitoringhafalanapp2.MainMenuActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Assalamu'alaikum"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/tambah"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/daftar4"
+        android:layout_marginEnd="11dp"
+        android:layout_alignTop="@+id/monitor"
+        android:layout_toStartOf="@+id/monitor" />
+
+    <ImageView
+        android:id="@+id/monitor"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/liist"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/welcome"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/list"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/edit"
+        android:layout_marginStart="12dp"
+        android:layout_alignTop="@+id/monitor"
+        android:layout_toEndOf="@+id/monitor" />
+
+    <TextView
+        android:id="@+id/id1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:text="Tambah Data Santri"
+        android:textColor="@android:color/background_light"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:layout_below="@+id/tambah"
+        android:layout_alignStart="@+id/tambah" />
+
+    <TextView
+        android:id="@+id/id2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Monitoring Hafalan"
+        android:textColor="@android:color/background_light"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:layout_alignBaseline="@+id/id1"
+        android:layout_alignBottom="@+id/id1"
+        android:layout_alignStart="@+id/monitor" />
+
+    <TextView
+        android:id="@+id/id3"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Kelola Data Santri"
+        android:textColor="@android:color/background_light"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:layout_alignBaseline="@+id/id2"
+        android:layout_alignBottom="@+id/id2"
+        android:layout_alignStart="@+id/list" />
+
+</RelativeLayout>

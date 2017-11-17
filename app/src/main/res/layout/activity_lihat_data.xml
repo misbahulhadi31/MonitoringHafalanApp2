@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.asus_pc.monitoringhafalanapp2.LihatDataActivity">
+
+    <TextView
+        android:id="@+id/noView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:text="Nomor Induk"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/EditText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:text="Text View"
+        android:layout_below="@+id/noView"
+        android:layout_alignStart="@+id/noView"
+        android:textColor="@android:color/background_dark"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/namaView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:text="Nama Santri"
+        android:textColor="@android:color/holo_purple"
+        android:layout_below="@+id/EditText1"
+        android:layout_alignStart="@+id/EditText1"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/EditText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:text="Text View"
+        android:layout_below="@+id/namaView"
+        android:layout_alignStart="@+id/namaView"
+        android:textColor="@android:color/background_dark"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/kelasView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:text="Kelas"
+        android:textColor="@android:color/holo_purple"
+        android:layout_below="@+id/EditText2"
+        android:layout_alignStart="@+id/EditText2"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/EditText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:text="Text View"
+        android:layout_below="@+id/kelasView"
+        android:layout_alignStart="@+id/kelasView"
+        android:textColor="@android:color/background_dark"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/konsulatView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:text="Konsulat"
+        android:textColor="@android:color/holo_purple"
+        android:layout_below="@+id/EditText3"
+        android:layout_alignStart="@+id/EditText3"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/EditText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:text="Text View"
+        android:layout_below="@+id/konsulatView"
+        android:layout_alignStart="@+id/konsulatView"
+        android:textColor="@android:color/background_dark"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/namaWaliView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:text="Nama Wali"
+        android:textColor="@android:color/holo_purple"
+        android:layout_below="@+id/EditText4"
+        android:layout_alignStart="@+id/EditText4"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/EditText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:text="Text View"
+        android:layout_below="@+id/namaWaliView"
+        android:layout_alignStart="@+id/namaWaliView"
+        android:textColor="@android:color/background_dark"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/noTelpView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:text="Nomor Telepon"
+        android:textColor="@android:color/holo_purple"
+        android:layout_below="@+id/EditText5"
+        android:layout_alignStart="@+id/EditText5"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/EditText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:text="Text View"
+        android:layout_below="@+id/noTelpView"
+        android:layout_alignStart="@+id/noTelpView"
+        android:textColor="@android:color/background_dark"
+        android:textSize="15dp" />
+
+    <Button
+        android:id="@+id/lihat"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Lihat hafalan"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp" />
+
+</RelativeLayout>
