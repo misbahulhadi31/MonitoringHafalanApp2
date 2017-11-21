@@ -31,7 +31,7 @@ public class ListHafalanActivity extends AppCompatActivity {
     private AlertDialog dialog;
     private List<Map<String, String>> mapDataList;
     private static final int[] to = new int[] { R.id.textNomor, R.id.texttNama};
-    private static final String[] from = new String[] {"nomorInduk","namaSantri"};
+    private static final String[] from = new String[] {"noInduk","namaSantri"};
     private List<MesosferData> listData;
     private TextView textViewEmpty;
 
@@ -79,8 +79,8 @@ public class ListHafalanActivity extends AppCompatActivity {
         MesosferQuery<MesosferData> query = MesosferData.getQuery("Santri");
 
         // showing a progress dialog loading
-        loading.setMessage("Loading...");
-        loading.show();
+      //  loading.setMessage("Loading...");
+//        loading.show();
 
         query.findAsync(new FindCallback<MesosferData>() {
             @Override
@@ -107,7 +107,7 @@ public class ListHafalanActivity extends AppCompatActivity {
                 listData = new ArrayList<>(list);
                 for (final MesosferData data : list) {
                     Map<String, String> map = new HashMap<>();
-                    map.put("nomorInduk", data.getDataString("noInduk"));
+                    map.put("noInduk", data.getDataString("noInduk"));
                     map.put("namaSantri", data.getDataString("namaSantri"));
                     try {
                         map.put("data", data.toJSON().toString(0));
