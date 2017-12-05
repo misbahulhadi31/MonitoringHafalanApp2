@@ -112,7 +112,7 @@ public class TambahSantriActivity extends AppCompatActivity {
         data.setData("kelas", kelasString);
         data.setData("konsulat", konsulatString);
         data.setData("namaWali", namaWaliString);
-        data.setData("noTelpon", noTelpString);
+        data.setData("noTelepon", noTelpString);
         // execute register user asynchronous
         data.saveAsync(new SaveCallback() {
             @Override

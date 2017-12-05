@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class LihatDataActivity extends AppCompatActivity {
     @BindView(R.id.noView)
@@ -39,19 +40,32 @@ public class LihatDataActivity extends AppCompatActivity {
     @BindView(R.id.lihat)
     Button lihat;
 
+    private Intent i;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lihat_data);
         ButterKnife.bind(this);
 
-        Intent i = getIntent();
+         i = getIntent();
 
         EditText1.setText(i.getStringExtra(config.NOMOR_INDUK));
         EditText2.setText(i.getStringExtra(config.NAMA_SANTRI));
         EditText3.setText(i.getStringExtra(config.KELAS));
         EditText4.setText(i.getStringExtra(config.KONSULAT));
-        EditText5.setText(i.getStringExtra(config.NO_TELEPON));
-        EditText6.setText(i.getStringExtra(config.NAMA_WALI));
+        EditText5.setText(i.getStringExtra(config.NAMA_WALI));
+        EditText6.setText(i.getStringExtra(config.NO_TELEPON));
+        
+    }
+
+    @OnClick(R.id.lihat)
+    public void lihatHafalan(){
+        Intent intent = new Intent(getApplicationContext(), ParafSantriActivity.class);
+        intent.putExtra(config.SELESAI, i.getStringExtra(config.SELESAI));
+        intent.putExtra(config.NO_PARAF, i.getStringExtra(config.NO_PARAF));
+        intent.putExtra(config.NAMA_SURAH, i.getStringExtra(config.NAMA_SURAH));
+        intent.putExtra(config.NAMA_SANTRI, i.getStringExtra(config.NAMA_SANTRI));
+        startActivity(intent);
     }
 }

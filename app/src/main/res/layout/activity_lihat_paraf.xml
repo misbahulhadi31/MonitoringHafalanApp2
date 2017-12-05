@@ -5,16 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.asus_pc.monitoringhafalanapp2.LihatDataActivity">
+    tools:context="com.example.asus_pc.monitoringhafalanapp2.LihatParafActivity">
 
     <TextView
-        android:id="@+id/noView"
+        android:id="@+id/tanggalView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:text="Nomor Induk"
+        android:text="Tanggal Paraf"
         android:textColor="@android:color/holo_purple"
         android:textSize="13dp" />
 
@@ -25,20 +25,20 @@
         android:layout_marginTop="5dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:text="Text View"
-        android:layout_below="@+id/noView"
-        android:layout_alignStart="@+id/noView"
+        android:text="Belum ada"
+        android:layout_below="@+id/tanggalView"
+        android:layout_alignStart="@+id/tanggalView"
         android:textColor="@android:color/background_dark"
         android:textSize="15dp" />
 
     <TextView
-        android:id="@+id/namaView"
+        android:id="@+id/namaParafView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:text="Nama Santri"
+        android:text="Nama Pemaraf"
         android:textColor="@android:color/holo_purple"
         android:layout_below="@+id/EditText1"
         android:layout_alignStart="@+id/EditText1"
@@ -51,20 +51,20 @@
         android:layout_marginTop="5dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:text="Text View"
-        android:layout_below="@+id/namaView"
-        android:layout_alignStart="@+id/namaView"
+        android:text="Belum ada"
+        android:layout_below="@+id/namaParafView"
+        android:layout_alignStart="@+id/namaParafView"
         android:textColor="@android:color/background_dark"
         android:textSize="15dp" />
 
     <TextView
-        android:id="@+id/kelasView"
+        android:id="@+id/catatanView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:text="Kelas"
+        android:text="catatan"
         android:textColor="@android:color/holo_purple"
         android:layout_below="@+id/EditText2"
         android:layout_alignStart="@+id/EditText2"
@@ -77,20 +77,20 @@
         android:layout_marginTop="5dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:text="Text View"
-        android:layout_below="@+id/kelasView"
-        android:layout_alignStart="@+id/kelasView"
+        android:text="Belum ada"
+        android:layout_below="@+id/catatanView"
+        android:layout_alignStart="@+id/catatanView"
         android:textColor="@android:color/background_dark"
         android:textSize="15dp" />
 
     <TextView
-        android:id="@+id/konsulatView"
+        android:id="@+id/statusView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:text="Konsulat"
+        android:text="Status"
         android:textColor="@android:color/holo_purple"
         android:layout_below="@+id/EditText3"
         android:layout_alignStart="@+id/EditText3"
@@ -103,69 +103,18 @@
         android:layout_marginTop="5dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:text="Text View"
-        android:layout_below="@+id/konsulatView"
-        android:layout_alignStart="@+id/konsulatView"
+        android:text="Belum selesai"
+        android:layout_below="@+id/statusView"
+        android:layout_alignStart="@+id/statusView"
         android:textColor="@android:color/background_dark"
         android:textSize="15dp" />
 
-    <TextView
-        android:id="@+id/namaWaliView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:text="Nama Wali"
-        android:textColor="@android:color/holo_purple"
-        android:layout_below="@+id/EditText4"
-        android:layout_alignStart="@+id/EditText4"
-        android:textSize="13dp" />
-
-    <TextView
-        android:id="@+id/EditText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:text="Text View"
-        android:layout_below="@+id/namaWaliView"
-        android:layout_alignStart="@+id/namaWaliView"
-        android:textColor="@android:color/background_dark"
-        android:textSize="15dp" />
-
-    <TextView
-        android:id="@+id/noTelpView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:text="Nomor Telepon"
-        android:textColor="@android:color/holo_purple"
-        android:layout_below="@+id/EditText5"
-        android:layout_alignStart="@+id/EditText5"
-        android:textSize="13dp" />
-
-    <TextView
-        android:id="@+id/EditText6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:text="Text View"
-        android:layout_below="@+id/noTelpView"
-        android:layout_alignStart="@+id/noTelpView"
-        android:textColor="@android:color/background_dark"
-        android:textSize="15dp" />
 
     <Button
         android:id="@+id/lihat"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Cek hafalan"
+        android:text="ubah paraf"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="41dp" />

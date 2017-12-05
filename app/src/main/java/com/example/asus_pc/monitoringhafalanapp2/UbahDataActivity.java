@@ -1,7 +1,10 @@
 package com.example.asus_pc.monitoringhafalanapp2;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +23,6 @@ public class UbahDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ubah_data);
 
-        dbSantri = new DataSantri(this);
         text1 = (EditText) findViewById(R.id.noInduk);
         text2 = (EditText) findViewById(R.id.namaSantri);
         text3 = (EditText) findViewById(R.id.kelas);
@@ -29,35 +31,35 @@ public class UbahDataActivity extends AppCompatActivity {
         text6 = (EditText) findViewById(R.id.noTelp);
         ubah = (Button) findViewById(R.id.simpan);
 
-        SQLiteDatabase db = dbSantri.getReadableDatabase();
-        cursor = db.rawQuery("SELECT * FROM santri WHERE namaSantri = '" +
-                getIntent().getStringExtra("namaSantri") + "'",null);
-        cursor.moveToFirst();
-        if (cursor.getCount()>0) {
-            cursor.moveToPosition(0);
-            text1.setText(cursor.getString(0).toString());
-            text2.setText(cursor.getString(1).toString());
-            text3.setText(cursor.getString(2).toString());
-            text4.setText(cursor.getString(3).toString());
-            text5.setText(cursor.getString(4).toString());
-            text6.setText(cursor.getString(5).toString());
-        }
+        Intent i = getIntent();
+        text1.setText(i.getStringExtra(config.NOMOR_INDUK));
+        text2.setText(i.getStringExtra(config.NAMA_SANTRI));
+        text3.setText(i.getStringExtra(config.KELAS));
+        text4.setText(i.getStringExtra(config.KONSULAT));
+        text5.setText(i.getStringExtra(config.NAMA_WALI));
+        text6.setText(i.getStringExtra(config.NO_TELEPON));
+
 
         ubah.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View arg0) {
-                // TODO Auto-generated method stub
-                SQLiteDatabase db = dbSantri.getWritableDatabase();
-                db.execSQL("update santri set namaSantri='"+
-                        text2.getText().toString() +"', kelas='" +
-                        text3.getText().toString()+"', konsulat='"+
-                        text4.getText().toString() +"', namaWali='" +
-                        text5.getText().toString() +"', noTelp='" +
-                        text6.getText().toString() + "' where noInduk='" +
-                        text1.getText().toString()+"'");
-                Toast.makeText(getApplicationContext(), "Berhasil Diubah", Toast.LENGTH_LONG).show();
-                KelolaSantriActivity.ka.RefreshList();
-                finish();
+            public void onClick(View v) {
+                AlertDialog.Builder ab = new AlertDialog.Builder(UbahDataActivity.this);
+                ab.setMessage("Yakin Untuk Mengubah Data ?")
+                        .setCancelable(false)
+                        .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Toast.makeText(getApplicationContext(), "Data Berhasil Diubah", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(UbahDataActivity.this, KelolaSantriActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = ab.create();
+                alert.show();
             }
         });
     }

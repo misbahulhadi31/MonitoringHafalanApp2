@@ -6,13 +6,16 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.eyro.mesosfer.MesosferData;
 import com.eyro.mesosfer.MesosferException;
+import com.eyro.mesosfer.MesosferQuery;
 import com.eyro.mesosfer.MesosferUser;
 import com.eyro.mesosfer.RegisterCallback;
 import com.eyro.mesosfer.SaveCallback;
@@ -24,8 +27,10 @@ import java.util.Locale;
 
 public class DetailParafActivity extends AppCompatActivity {
     EditText text1,text2, text3;
-    private String tanggalString, pemarafString, isiCatatanString;
+    private String parafString, namaString, tanggalString, pemarafString, isiCatatanString;
     private Date tanggal;
+    private CheckBox checkBox;
+    private String selesai;
 
     private ProgressDialog loading;
     private AlertDialog dialog;
@@ -39,11 +44,30 @@ public class DetailParafActivity extends AppCompatActivity {
         text2 = (EditText) findViewById(R.id.pemaraf);
         text3 = (EditText) findViewById(R.id.isiCatatan);
 
+        checkBox = (CheckBox) findViewById(R.id.checkBox);
+
+        Intent intent = getIntent();
+        parafString = intent.getStringExtra(config.NO_PARAF);
+        namaString = intent.getStringExtra(config.NAMA_SANTRI);
+
+        Log.d("parafString", "Value: " + parafString);
+        Log.d("namaString", "Value: " + namaString);
+
+//        Intent intent = getIntent();
+//
+//        text1.setText(intent.getStringExtra(config.TANGGAL_PARAF));
+//        text2.setText(intent.getStringExtra(config.NAMA_PEMARAF));
+//        text3.setText(intent.getStringExtra(config.CATATAN));
+
+//        Log.d("selesai", intent.getStringExtra(config.SELESAI));
+
+
+
+
         loading = new ProgressDialog(this);
         loading.setIndeterminate(true);
         loading.setCancelable(false);
         loading.setCanceledOnTouchOutside(false);
-
     }
 
     public void handleDetailParaf(View view) {
@@ -73,7 +97,7 @@ public class DetailParafActivity extends AppCompatActivity {
                 tanggal = format.parse(tanggalString);
             } catch (ParseException e) {
                 // show error message when user input invalid format of date
-                Toast.makeText(this, "Mohon isi dengan format `dd-mm-yyyy`", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Mohon isi dengan format `01-01-2001`", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
@@ -94,11 +118,15 @@ public class DetailParafActivity extends AppCompatActivity {
         loading.show();
 
         // create new instance of Mesosfer User
-        MesosferData data = MesosferData.createData("DetailHafalan");
+        MesosferData data = MesosferData.createData("ParafHafalan");
+
+
         // set default field
         data.setData("tanggalParaf", tanggal);
         data.setData("namaPemaraf", pemarafString);
-        data.setData("isiCatatan", isiCatatanString);
+        data.setData("catatan", isiCatatanString);
+        data.setData(config.NO_PARAF, parafString);
+        data.setData(config.NAMA_SANTRI, namaString);
         // execute register user asynchronous
         data.saveAsync(new SaveCallback() {
             @Override
@@ -120,10 +148,7 @@ public class DetailParafActivity extends AppCompatActivity {
                     dialog = builder.show();
                     return;
                 }
-
-                builder.setTitle("Data telah disimpan");
-                builder.setMessage("Alhamdulillah....");
-                dialog = builder.show();
+                Toast.makeText(DetailParafActivity.this, "Data Telah Disimpan", Toast.LENGTH_SHORT).show();
             }
         });
 

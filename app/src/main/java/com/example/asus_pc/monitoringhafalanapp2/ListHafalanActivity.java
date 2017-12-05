@@ -69,6 +69,7 @@ public class ListHafalanActivity extends AppCompatActivity {
                 intent.putExtra(config.KONSULAT, data.getDataString(config.KONSULAT));
                 intent.putExtra(config.NAMA_WALI, data.getDataString(config.NAMA_WALI));
                 intent.putExtra(config.NO_TELEPON, data.getDataString(config.NO_TELEPON));
+                intent.putExtra(config.SELESAI, data.getDataBoolean(config.SELESAI));
                 startActivity(intent);
             }
         });

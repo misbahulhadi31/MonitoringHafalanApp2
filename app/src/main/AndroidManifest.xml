@@ -28,7 +28,8 @@
         <activity android:name=".LihatDataActivity" />
         <activity android:name=".KirimPesanActivity" />
         <activity android:name=".DetailParafActivity" />
-        <activity android:name=".ListHafalanActivity"></activity>
+        <activity android:name=".ListHafalanActivity" />
+        <activity android:name=".LihatParafActivity"></activity>
     </application>
 
 </manifest>
