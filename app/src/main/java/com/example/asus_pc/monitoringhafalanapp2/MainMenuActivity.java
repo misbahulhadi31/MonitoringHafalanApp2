@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SimpleAdapter;
 
 public class MainMenuActivity extends AppCompatActivity {
     ImageView tambah, monitor, list;
@@ -14,9 +15,9 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        tambah = (ImageView) findViewById(R.id.tambah);
-        monitor = (ImageView) findViewById(R.id.monitor);
-        list = (ImageView) findViewById(R.id.list);
+        tambah = findViewById(R.id.tambah);
+        monitor = findViewById(R.id.monitor);
+        list = findViewById(R.id.list);
 
         tambah.setOnClickListener(new View.OnClickListener() {
             @Override

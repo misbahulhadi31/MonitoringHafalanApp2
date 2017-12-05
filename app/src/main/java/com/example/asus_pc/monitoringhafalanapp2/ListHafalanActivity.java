@@ -79,6 +79,7 @@ public class ListHafalanActivity extends AppCompatActivity {
 
     private void updateAndShowDataList() {
         MesosferQuery<MesosferData> query = MesosferData.getQuery("Santri");
+        //query.whereEqualTo();
 
         // showing a progress dialog loading
       //  loading.setMessage("Loading...");

@@ -40,11 +40,11 @@ public class DetailParafActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_paraf);
 
-        text1 = (EditText) findViewById(R.id.tanggal);
-        text2 = (EditText) findViewById(R.id.pemaraf);
-        text3 = (EditText) findViewById(R.id.isiCatatan);
+        text1 =  findViewById(R.id.tanggal);
+        text2 =  findViewById(R.id.pemaraf);
+        text3 =  findViewById(R.id.isiCatatan);
 
-        checkBox = (CheckBox) findViewById(R.id.checkBox);
+        checkBox = findViewById(R.id.checkBox);
 
         Intent intent = getIntent();
         parafString = intent.getStringExtra(config.NO_PARAF);
@@ -120,6 +120,12 @@ public class DetailParafActivity extends AppCompatActivity {
         // create new instance of Mesosfer User
         MesosferData data = MesosferData.createData("ParafHafalan");
 
+        if (checkBox.isChecked()){
+            selesai = "1";
+        } else {
+            selesai = "0";
+        }
+
 
         // set default field
         data.setData("tanggalParaf", tanggal);
@@ -127,6 +133,7 @@ public class DetailParafActivity extends AppCompatActivity {
         data.setData("catatan", isiCatatanString);
         data.setData(config.NO_PARAF, parafString);
         data.setData(config.NAMA_SANTRI, namaString);
+        data.setData(config.SELESAI, selesai);
         // execute register user asynchronous
         data.saveAsync(new SaveCallback() {
             @Override

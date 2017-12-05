@@ -44,6 +44,8 @@ public class ParafSantriActivity extends AppCompatActivity {
     private ImageView imageView;
     private CustomListAdapter customListAdapter;
 
+    private static final String TAG = ParafSantriActivity.class.getSimpleName();
+
 
 
     @Override
@@ -59,10 +61,11 @@ public class ParafSantriActivity extends AppCompatActivity {
         parafString = intent.getStringExtra(config.NO_PARAF);
         surahString = intent.getStringExtra(config.NAMA_SURAH);
         namaString = intent.getStringExtra(config.NAMA_SANTRI);
+//        Log.d(TAG, namaString);
 
-        gridView = (GridView) findViewById(R.id.dataParaf);
-        textViewEmpty = (TextView)findViewById(R.id.emptyElement2);
-        imageView = (ImageView)findViewById(R.id.listGambar);
+        gridView =  findViewById(R.id.dataParaf);
+        textViewEmpty = findViewById(R.id.emptyElement2);
+        imageView = findViewById(R.id.listGambar);
         adapter = new SimpleAdapter(getApplicationContext(), mapDataList, R.layout.paraf_list, from, to);
         customListAdapter = new CustomListAdapter(getApplicationContext(), parafSantriArrayList);
 
@@ -93,7 +96,7 @@ public class ParafSantriActivity extends AppCompatActivity {
                                 intent.putExtra(config.CATATAN, data.getDataString(config.CATATAN));
                                 intent.putExtra(config.SELESAI, data.getDataString(config.SELESAI));
                                 intent.putExtra(config.NO_PARAF, data.getDataString(config.NO_PARAF));
-                                intent.putExtra(config.NAMA_SANTRI, data.getDataString(config.NAMA_SANTRI));
+                                intent.putExtra(config.NAMA_SANTRI, namaString);
                                 //parafSurah();
                                 startActivity(intent);
                                 break;
@@ -111,7 +114,9 @@ public class ParafSantriActivity extends AppCompatActivity {
     }
 
     private void updateAndShowDataList() {
+        //select * from parafSurah where namaSantri = '?';
         MesosferQuery<MesosferData> query = MesosferData.getQuery("ParafSurah");
+        //query.whereEqualTo();
 
 
         // showing a progress dialog loading

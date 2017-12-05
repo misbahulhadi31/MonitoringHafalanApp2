@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +43,10 @@ public class LihatDataActivity extends AppCompatActivity {
 
     private Intent i;
 
+    private static final String TAG = LihatDataActivity.class.getSimpleName();
+
+    private String namaSantri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,9 +54,10 @@ public class LihatDataActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
          i = getIntent();
+         namaSantri = i.getStringExtra(config.NAMA_SANTRI);
 
         EditText1.setText(i.getStringExtra(config.NOMOR_INDUK));
-        EditText2.setText(i.getStringExtra(config.NAMA_SANTRI));
+        EditText2.setText(namaSantri);
         EditText3.setText(i.getStringExtra(config.KELAS));
         EditText4.setText(i.getStringExtra(config.KONSULAT));
         EditText5.setText(i.getStringExtra(config.NAMA_WALI));
@@ -65,7 +71,7 @@ public class LihatDataActivity extends AppCompatActivity {
         intent.putExtra(config.SELESAI, i.getStringExtra(config.SELESAI));
         intent.putExtra(config.NO_PARAF, i.getStringExtra(config.NO_PARAF));
         intent.putExtra(config.NAMA_SURAH, i.getStringExtra(config.NAMA_SURAH));
-        intent.putExtra(config.NAMA_SANTRI, i.getStringExtra(config.NAMA_SANTRI));
+        intent.putExtra(config.NAMA_SANTRI, namaSantri);
         startActivity(intent);
     }
 }
