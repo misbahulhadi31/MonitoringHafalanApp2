@@ -38,13 +38,19 @@ public class ParafSantriActivity extends AppCompatActivity {
     private ArrayList<ParafSantri> parafSantriArrayList;
     private static final int[] to = new int[] { R.id.listParaf, R.id.listSurah};
     private static final String[] from = new String[] {"noParaf","namaSurah"};
-    private String parafString, namaString, surahString;
+    private String parafString, namaString, surahString, waliString, teleponString;
     private List<MesosferData> listData;
     private TextView textViewEmpty;
     private ImageView imageView;
     private CustomListAdapter customListAdapter;
 
     private static final String TAG = ParafSantriActivity.class.getSimpleName();
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ParafSantriActivity.this, ListHafalanActivity.class);
+        startActivity(intent);
+    }
 
 
 
@@ -61,6 +67,9 @@ public class ParafSantriActivity extends AppCompatActivity {
         parafString = intent.getStringExtra(config.NO_PARAF);
         surahString = intent.getStringExtra(config.NAMA_SURAH);
         namaString = intent.getStringExtra(config.NAMA_SANTRI);
+        waliString = intent.getStringExtra(config.NAMA_WALI);
+        teleponString = intent.getStringExtra(config.NO_TELEPON);
+
 //        Log.d(TAG, namaString);
 
         gridView =  findViewById(R.id.dataParaf);
@@ -101,7 +110,14 @@ public class ParafSantriActivity extends AppCompatActivity {
                                 startActivity(intent);
                                 break;
                             case 1 :
-                                Toast.makeText(getApplicationContext(), "Hafalan Belum Selesai", Toast.LENGTH_LONG).show();
+                                Intent i = new Intent(getApplicationContext(), KirimPesanActivity.class);
+                                i.putExtra(config.NAMA_SANTRI, namaString);
+                                i.putExtra(config.NAMA_WALI, waliString);
+                                i.putExtra(config.NO_TELEPON, teleponString);
+                                i.putExtra(config.NAMA_SURAH, data.getDataString(config.NAMA_SURAH));
+                                i.putExtra(config.PESAN, data.getDataString(config.PESAN));
+                                //Toast.makeText(getApplicationContext(), "Hafalan Belum Selesai", Toast.LENGTH_LONG).show();
+                                startActivity(i);
                                 break;
                         }
                     }
@@ -175,47 +191,4 @@ public class ParafSantriActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void parafSurah() {
-        // showing a progress dialog loading
-        loading.setMessage("Menyimpan data....");
-        loading.show();
-
-        // create new instance of Mesosfer User
-        MesosferData data = MesosferData.createData("ParafHafalan");
-
-
-        // set default field
-        data.setData("noParaf", parafString);
-        data.setData("namaSurah", surahString);
-        data.setData(config.NAMA_SANTRI, namaString);
-        // execute register user asynchronous
-        data.saveAsync(new SaveCallback() {
-            @Override
-            public void done(MesosferException e) {
-                // hide progress dialog loading
-                loading.dismiss();
-
-                // setup alert dialog builder
-                AlertDialog.Builder builder = new AlertDialog.Builder(ParafSantriActivity.this);
-                builder.setNegativeButton(android.R.string.ok, null);
-
-                // check if there is an exception happen
-                if (e != null) {
-                    builder.setTitle("Error Happen");
-                    builder.setMessage(
-                            String.format(Locale.getDefault(), "Error code: %d\nDescription: %s",
-                                    e.getCode(), e.getMessage())
-                    );
-                    dialog = builder.show();
-                    return;
-                }
-                Toast.makeText(ParafSantriActivity.this, "Data Telah Disimpan", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
-
-
 }

@@ -21,9 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
-        android:text="Assalamu'alaikum"
+        android:layout_alignStart="@+id/tambah"
+        android:text=""
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="15sp"
+        android:inputType="textCapSentences|textMultiLine"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true" />
 
@@ -70,7 +72,7 @@
         android:id="@+id/id2"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="Monitoring Hafalan"
+        android:text="Lihat Data Santri"
         android:textColor="@android:color/background_light"
         android:textSize="15dp"
         android:gravity="center"

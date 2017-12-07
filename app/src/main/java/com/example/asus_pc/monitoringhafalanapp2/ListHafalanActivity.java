@@ -37,6 +37,12 @@ public class ListHafalanActivity extends AppCompatActivity {
     private TextView textViewEmpty;
 
     @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ListHafalanActivity.this, MainMenuActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hafalan_santri);
@@ -76,6 +82,8 @@ public class ListHafalanActivity extends AppCompatActivity {
 
         listView.setEmptyView(textViewEmpty);
     }
+
+
 
     private void updateAndShowDataList() {
         MesosferQuery<MesosferData> query = MesosferData.getQuery("Santri");

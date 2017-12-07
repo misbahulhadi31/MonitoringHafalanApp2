@@ -1,9 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.asus_pc.monitoringhafalanapp2.KirimPesanActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/santriView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:text="Nama Santri"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="13dp" />
+
+    <EditText
+        android:id="@+id/editSantri"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/santriView"
+        android:layout_below="@+id/santriView"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_dark"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/surahView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editSantri"
+        android:layout_below="@+id/editSantri"
+        android:layout_marginTop="10dp"
+        android:text="Nama Surah"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="13dp" />
+
+    <EditText
+        android:id="@+id/editSurah"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/surahView"
+        android:layout_below="@+id/surahView"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_dark"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/waliView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editSurah"
+        android:layout_below="@+id/editSurah"
+        android:layout_marginTop="10dp"
+        android:text="Nama Wali"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="13dp" />
+
+    <EditText
+        android:id="@+id/editWali"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/waliView"
+        android:layout_below="@+id/waliView"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_dark"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/nomorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editWali"
+        android:layout_below="@+id/editWali"
+        android:layout_marginTop="10dp"
+        android:text="Nomor Telepon"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="13dp" />
+
+    <EditText
+        android:id="@+id/editNomor"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/nomorView"
+        android:layout_below="@+id/nomorView"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="@android:color/background_dark"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/PesanView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editNomor"
+        android:layout_below="@+id/editNomor"
+        android:layout_marginTop="10dp"
+        android:text="Isi Pesan"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="13dp" />
+
+    <EditText
+        android:id="@+id/editPesan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/PesanView"
+        android:layout_below="@+id/PesanView"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLength="2000"
+        android:maxLines="12"
+        android:textColor="@android:color/background_dark"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/kirim"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="kirim"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp" />
+
+</RelativeLayout>

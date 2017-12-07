@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class LihatParafActivity extends AppCompatActivity {
@@ -15,6 +16,11 @@ public class LihatParafActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lihat_paraf);
+
+        text1 = (TextView) findViewById(R.id.EditText1);
+        text2 = (TextView) findViewById(R.id.EditText2);
+        text3 = (TextView) findViewById(R.id.EditText3);
+        text4 = (TextView) findViewById(R.id.EditText4);
 
         ubah.setOnClickListener(new View.OnClickListener() {
             @Override

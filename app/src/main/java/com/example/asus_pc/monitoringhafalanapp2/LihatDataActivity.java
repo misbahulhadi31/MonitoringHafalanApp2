@@ -45,7 +45,7 @@ public class LihatDataActivity extends AppCompatActivity {
 
     private static final String TAG = LihatDataActivity.class.getSimpleName();
 
-    private String namaSantri;
+    private String namaSantri,namaWali,noTelepon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,16 +53,24 @@ public class LihatDataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lihat_data);
         ButterKnife.bind(this);
 
-         i = getIntent();
-         namaSantri = i.getStringExtra(config.NAMA_SANTRI);
+        i = getIntent();
+        namaSantri = i.getStringExtra(config.NAMA_SANTRI);
+        namaWali = i.getStringExtra(config.NAMA_WALI);
+        noTelepon = i.getStringExtra(config.NO_TELEPON);
 
         EditText1.setText(i.getStringExtra(config.NOMOR_INDUK));
         EditText2.setText(namaSantri);
         EditText3.setText(i.getStringExtra(config.KELAS));
         EditText4.setText(i.getStringExtra(config.KONSULAT));
-        EditText5.setText(i.getStringExtra(config.NAMA_WALI));
-        EditText6.setText(i.getStringExtra(config.NO_TELEPON));
+        EditText5.setText(namaWali);
+        EditText6.setText(noTelepon);
         
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(LihatDataActivity.this, ListHafalanActivity.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.lihat)
@@ -72,6 +80,8 @@ public class LihatDataActivity extends AppCompatActivity {
         intent.putExtra(config.NO_PARAF, i.getStringExtra(config.NO_PARAF));
         intent.putExtra(config.NAMA_SURAH, i.getStringExtra(config.NAMA_SURAH));
         intent.putExtra(config.NAMA_SANTRI, namaSantri);
+        intent.putExtra(config.NAMA_WALI, namaWali);
+        intent.putExtra(config.NO_TELEPON, noTelepon);
         startActivity(intent);
     }
 }

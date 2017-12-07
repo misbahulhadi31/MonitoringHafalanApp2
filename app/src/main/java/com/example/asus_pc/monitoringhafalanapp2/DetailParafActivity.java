@@ -70,6 +70,12 @@ public class DetailParafActivity extends AppCompatActivity {
         loading.setCanceledOnTouchOutside(false);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(DetailParafActivity.this, ParafSantriActivity.class);
+        startActivity(intent);
+    }
+
     public void handleDetailParaf(View view) {
         // get all value from input
         tanggalString = text1.getText().toString();

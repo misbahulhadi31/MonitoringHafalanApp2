@@ -17,5 +17,6 @@ public class config {
     public static final String NAMA_PEMARAF = "namaPemaraf";
     public static final String CATATAN = "catatan";
     public static final String SELESAI = "selesai";
+    public static final String PESAN = "isiPesan";
 
 }
