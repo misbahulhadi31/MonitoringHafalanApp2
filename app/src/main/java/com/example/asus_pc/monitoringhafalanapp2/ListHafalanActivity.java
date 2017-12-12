@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.eyro.mesosfer.FindCallback;
 import com.eyro.mesosfer.MesosferData;
@@ -69,13 +68,13 @@ public class ListHafalanActivity extends AppCompatActivity {
                 final MesosferData data = listData.get(i);
                 Intent intent = new Intent(getApplicationContext(), LihatDataActivity.class);
 
-                intent.putExtra(config.NOMOR_INDUK, data.getDataString(config.NOMOR_INDUK));
-                intent.putExtra(config.NAMA_SANTRI, data.getDataString(config.NAMA_SANTRI));
-                intent.putExtra(config.KELAS, data.getDataString(config.KELAS));
-                intent.putExtra(config.KONSULAT, data.getDataString(config.KONSULAT));
-                intent.putExtra(config.NAMA_WALI, data.getDataString(config.NAMA_WALI));
-                intent.putExtra(config.NO_TELEPON, data.getDataString(config.NO_TELEPON));
-                intent.putExtra(config.SELESAI, data.getDataBoolean(config.SELESAI));
+                intent.putExtra(Config.NOMOR_INDUK, data.getDataString(Config.NOMOR_INDUK));
+                intent.putExtra(Config.NAMA_SANTRI, data.getDataString(Config.NAMA_SANTRI));
+                intent.putExtra(Config.KELAS, data.getDataString(Config.KELAS));
+                intent.putExtra(Config.KONSULAT, data.getDataString(Config.KONSULAT));
+                intent.putExtra(Config.NAMA_WALI, data.getDataString(Config.NAMA_WALI));
+                intent.putExtra(Config.NO_TELEPON, data.getDataString(Config.NO_TELEPON));
+                intent.putExtra(Config.SELESAI, data.getDataBoolean(Config.SELESAI));
                 startActivity(intent);
             }
         });

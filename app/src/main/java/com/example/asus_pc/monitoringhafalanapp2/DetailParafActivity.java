@@ -8,16 +8,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.eyro.mesosfer.MesosferData;
 import com.eyro.mesosfer.MesosferException;
-import com.eyro.mesosfer.MesosferQuery;
-import com.eyro.mesosfer.MesosferUser;
-import com.eyro.mesosfer.RegisterCallback;
 import com.eyro.mesosfer.SaveCallback;
 
 import java.text.ParseException;
@@ -47,19 +43,19 @@ public class DetailParafActivity extends AppCompatActivity {
         checkBox = findViewById(R.id.checkBox);
 
         Intent intent = getIntent();
-        parafString = intent.getStringExtra(config.NO_PARAF);
-        namaString = intent.getStringExtra(config.NAMA_SANTRI);
+        parafString = intent.getStringExtra(Config.NO_PARAF);
+        namaString = intent.getStringExtra(Config.NAMA_SANTRI);
 
         Log.d("parafString", "Value: " + parafString);
         Log.d("namaString", "Value: " + namaString);
 
 //        Intent intent = getIntent();
 //
-//        text1.setText(intent.getStringExtra(config.TANGGAL_PARAF));
-//        text2.setText(intent.getStringExtra(config.NAMA_PEMARAF));
-//        text3.setText(intent.getStringExtra(config.CATATAN));
+//        text1.setText(intent.getStringExtra(Config.TANGGAL_PARAF));
+//        text2.setText(intent.getStringExtra(Config.NAMA_PEMARAF));
+//        text3.setText(intent.getStringExtra(Config.CATATAN));
 
-//        Log.d("selesai", intent.getStringExtra(config.SELESAI));
+//        Log.d("selesai", intent.getStringExtra(Config.SELESAI));
 
 
 
@@ -73,6 +69,8 @@ public class DetailParafActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(DetailParafActivity.this, ParafSantriActivity.class);
+        intent.putExtra(Config.NAMA_SANTRI, namaString);
+        intent.putExtra(Config.SELESAI, selesai);
         startActivity(intent);
     }
 
@@ -137,9 +135,9 @@ public class DetailParafActivity extends AppCompatActivity {
         data.setData("tanggalParaf", tanggal);
         data.setData("namaPemaraf", pemarafString);
         data.setData("catatan", isiCatatanString);
-        data.setData(config.NO_PARAF, parafString);
-        data.setData(config.NAMA_SANTRI, namaString);
-        data.setData(config.SELESAI, selesai);
+        data.setData(Config.NO_PARAF, parafString);
+        data.setData(Config.NAMA_SANTRI, namaString);
+        data.setData(Config.SELESAI, selesai);
         // execute register user asynchronous
         data.saveAsync(new SaveCallback() {
             @Override

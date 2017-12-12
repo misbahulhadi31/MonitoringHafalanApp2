@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="paraf">
+        <item>Paraf 1</item>
+        <item>Paraf 2</item>
+        <item>Paraf 3</item>
+        <item>Paraf 4</item>
+        <item>Paraf 5</item>
+        <item>Paraf 6</item>
+        <item>Paraf 7</item>
+        <item>Paraf 8</item>
+        <item>Paraf 9</item>
+        <item>Paraf 10</item>
+        <item>Paraf 12</item>
+        <item>Paraf 12</item>
+    </string-array>
+</resources>

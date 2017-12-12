@@ -32,17 +32,17 @@ public class KirimPesanActivity extends AppCompatActivity {
         kirim = (Button)findViewById(R.id.kirim);
 
         i = getIntent();
-        namaSantri = i.getStringExtra(config.NAMA_SANTRI);
-        namaWali = i.getStringExtra(config.NAMA_WALI);
-        noTelepon = i.getStringExtra(config.NO_TELEPON);
-        //namaSurah = i.getStringExtra(config.NAMA_SURAH);
+        namaSantri = i.getStringExtra(Config.NAMA_SANTRI);
+        namaWali = i.getStringExtra(Config.NAMA_WALI);
+        noTelepon = i.getStringExtra(Config.NO_TELEPON);
+        //namaSurah = i.getStringExtra(Config.NAMA_SURAH);
 
         santri.setText(namaSantri);
         wali.setText(namaWali);
         nomor.setText(noTelepon);
-        surah.setText(i.getStringExtra(config.NAMA_SURAH));
+        surah.setText(i.getStringExtra(Config.NAMA_SURAH));
 
-        //pesan.setText(i.getStringExtra(config.PESAN));
+        //pesan.setText(i.getStringExtra(Config.PESAN));
 
         pesan.setText("Assalamu'alaikum Bapak "+wali.getText().toString()+ "\n" +
                 "Alhamduliilah anak bapak " +santri.getText().toString()+" telah menyelesaikan hafalan " +surah.getText().toString()+ "\n" +

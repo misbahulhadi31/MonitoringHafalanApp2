@@ -3,7 +3,6 @@ package com.example.asus_pc.monitoringhafalanapp2;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,12 +31,12 @@ public class UbahDataActivity extends AppCompatActivity {
         ubah = (Button) findViewById(R.id.simpan);
 
         Intent i = getIntent();
-        text1.setText(i.getStringExtra(config.NOMOR_INDUK));
-        text2.setText(i.getStringExtra(config.NAMA_SANTRI));
-        text3.setText(i.getStringExtra(config.KELAS));
-        text4.setText(i.getStringExtra(config.KONSULAT));
-        text5.setText(i.getStringExtra(config.NAMA_WALI));
-        text6.setText(i.getStringExtra(config.NO_TELEPON));
+        text1.setText(i.getStringExtra(Config.NOMOR_INDUK));
+        text2.setText(i.getStringExtra(Config.NAMA_SANTRI));
+        text3.setText(i.getStringExtra(Config.KELAS));
+        text4.setText(i.getStringExtra(Config.KONSULAT));
+        text5.setText(i.getStringExtra(Config.NAMA_WALI));
+        text6.setText(i.getStringExtra(Config.NO_TELEPON));
 
 
         ubah.setOnClickListener(new View.OnClickListener() {

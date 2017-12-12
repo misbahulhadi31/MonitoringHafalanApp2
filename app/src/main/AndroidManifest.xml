@@ -30,6 +30,7 @@
         <activity android:name=".DetailParafActivity" />
         <activity android:name=".ListHafalanActivity" />
         <activity android:name=".LihatParafActivity" />
+        <activity android:name=".AddParafActivity"></activity>
     </application>
 
 </manifest>

@@ -1,13 +1,10 @@
 package com.example.asus_pc.monitoringhafalanapp2;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,14 +51,14 @@ public class LihatDataActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         i = getIntent();
-        namaSantri = i.getStringExtra(config.NAMA_SANTRI);
-        namaWali = i.getStringExtra(config.NAMA_WALI);
-        noTelepon = i.getStringExtra(config.NO_TELEPON);
+        namaSantri = i.getStringExtra(Config.NAMA_SANTRI);
+        namaWali = i.getStringExtra(Config.NAMA_WALI);
+        noTelepon = i.getStringExtra(Config.NO_TELEPON);
 
-        EditText1.setText(i.getStringExtra(config.NOMOR_INDUK));
+        EditText1.setText(i.getStringExtra(Config.NOMOR_INDUK));
         EditText2.setText(namaSantri);
-        EditText3.setText(i.getStringExtra(config.KELAS));
-        EditText4.setText(i.getStringExtra(config.KONSULAT));
+        EditText3.setText(i.getStringExtra(Config.KELAS));
+        EditText4.setText(i.getStringExtra(Config.KONSULAT));
         EditText5.setText(namaWali);
         EditText6.setText(noTelepon);
         
@@ -76,12 +73,12 @@ public class LihatDataActivity extends AppCompatActivity {
     @OnClick(R.id.lihat)
     public void lihatHafalan(){
         Intent intent = new Intent(getApplicationContext(), ParafSantriActivity.class);
-        intent.putExtra(config.SELESAI, i.getStringExtra(config.SELESAI));
-        intent.putExtra(config.NO_PARAF, i.getStringExtra(config.NO_PARAF));
-        intent.putExtra(config.NAMA_SURAH, i.getStringExtra(config.NAMA_SURAH));
-        intent.putExtra(config.NAMA_SANTRI, namaSantri);
-        intent.putExtra(config.NAMA_WALI, namaWali);
-        intent.putExtra(config.NO_TELEPON, noTelepon);
+//        intent.putExtra(Config.SELESAI, i.getStringExtra(Config.SELESAI));
+        intent.putExtra(Config.NO_PARAF, i.getStringExtra(Config.NO_PARAF));
+        intent.putExtra(Config.NAMA_SURAH, i.getStringExtra(Config.NAMA_SURAH));
+        intent.putExtra(Config.NAMA_SANTRI, namaSantri);
+        intent.putExtra(Config.NAMA_WALI, namaWali);
+        intent.putExtra(Config.NO_TELEPON, noTelepon);
         startActivity(intent);
     }
 }

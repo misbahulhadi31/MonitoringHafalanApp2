@@ -17,10 +17,11 @@ public class LihatParafActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lihat_paraf);
 
-        text1 = (TextView) findViewById(R.id.EditText1);
-        text2 = (TextView) findViewById(R.id.EditText2);
-        text3 = (TextView) findViewById(R.id.EditText3);
-        text4 = (TextView) findViewById(R.id.EditText4);
+        text1 =  findViewById(R.id.EditText1);
+        text2 =  findViewById(R.id.EditText2);
+        text3 =  findViewById(R.id.EditText3);
+        text4 =  findViewById(R.id.EditText4);
+        ubah = findViewById(R.id.lihat);
 
         ubah.setOnClickListener(new View.OnClickListener() {
             @Override
