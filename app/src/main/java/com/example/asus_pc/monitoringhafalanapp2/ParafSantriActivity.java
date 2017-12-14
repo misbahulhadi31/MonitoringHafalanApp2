@@ -1,26 +1,25 @@
 package com.example.asus_pc.monitoringhafalanapp2;
 
+import android.support.v7.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.eyro.mesosfer.FindCallback;
 import com.eyro.mesosfer.MesosferData;
 import com.eyro.mesosfer.MesosferException;
 import com.eyro.mesosfer.MesosferQuery;
+import com.eyro.mesosfer.SaveCallback;
 
 import org.json.JSONException;
 
@@ -37,14 +36,13 @@ public class ParafSantriActivity extends AppCompatActivity {
     private AlertDialog dialog;
     private List<Map<String, String>> mapDataList;
     private ArrayList<ParafSantri> parafSantriArrayList;
-    private static final int[] to = new int[]{R.id.listParaf, R.id.listSurah};
-    private static final String[] from = new String[]{"noParaf", "namaSurah"};
-    private String namaString, waliString, teleponString;
+    private static final int[] to = new int[] { R.id.listParaf, R.id.listSurah};
+    private static final String[] from = new String[] {"noParaf","namaSurah"};
+    private String parafString, namaString, surahString, waliString, teleponString;
     private List<MesosferData> listData;
     private TextView textViewEmpty;
     private ImageView imageView;
     private CustomListAdapter customListAdapter;
-    private MesosferData data;
 
     private static final String TAG = ParafSantriActivity.class.getSimpleName();
 
@@ -53,6 +51,8 @@ public class ParafSantriActivity extends AppCompatActivity {
         Intent intent = new Intent(ParafSantriActivity.this, ListHafalanActivity.class);
         startActivity(intent);
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +64,15 @@ public class ParafSantriActivity extends AppCompatActivity {
         parafSantriArrayList = new ArrayList<>();
 
         Intent intent = getIntent();
+        parafString = intent.getStringExtra(Config.NO_PARAF);
+        surahString = intent.getStringExtra(Config.NAMA_SURAH);
         namaString = intent.getStringExtra(Config.NAMA_SANTRI);
         waliString = intent.getStringExtra(Config.NAMA_WALI);
         teleponString = intent.getStringExtra(Config.NO_TELEPON);
 
-        gridView = findViewById(R.id.dataParaf);
+//        Log.d(TAG, namaString);
+
+        gridView =  findViewById(R.id.dataParaf);
         textViewEmpty = findViewById(R.id.emptyElement2);
         imageView = findViewById(R.id.listGambar);
         adapter = new SimpleAdapter(getApplicationContext(), mapDataList, R.layout.paraf_list, from, to);
@@ -87,13 +91,14 @@ public class ParafSantriActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                data = listData.get(i);
+                final MesosferData data = listData.get(i);
+                //Toast.makeText(ParafSantriActivity.this, ""+data.getDataString("selesai"), Toast.LENGTH_SHORT).show();
                 final CharSequence[] dialogitem = {"Cek Paraf", "Kirim Pesan"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(ParafSantriActivity.this);
                 builder.setItems(dialogitem, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int item) {
-                        switch (item) {
-                            case 0:
+                        switch(item){
+                            case 0 :
                                 Intent intent = new Intent(getApplicationContext(), DetailParafActivity.class);
                                 intent.putExtra(Config.TANGGAL_PARAF, data.getDataString(Config.TANGGAL_PARAF));
                                 intent.putExtra(Config.NAMA_PEMARAF, data.getDataString(Config.NAMA_PEMARAF));
@@ -101,16 +106,17 @@ public class ParafSantriActivity extends AppCompatActivity {
                                 intent.putExtra(Config.SELESAI, data.getDataString(Config.SELESAI));
                                 intent.putExtra(Config.NO_PARAF, data.getDataString(Config.NO_PARAF));
                                 intent.putExtra(Config.NAMA_SANTRI, namaString);
-                                intent.putExtra("id", data.getObjectId());
+                                //parafSurah();
                                 startActivity(intent);
                                 break;
-                            case 1:
+                            case 1 :
                                 Intent i = new Intent(getApplicationContext(), KirimPesanActivity.class);
                                 i.putExtra(Config.NAMA_SANTRI, namaString);
                                 i.putExtra(Config.NAMA_WALI, waliString);
                                 i.putExtra(Config.NO_TELEPON, teleponString);
                                 i.putExtra(Config.NAMA_SURAH, data.getDataString(Config.NAMA_SURAH));
                                 i.putExtra(Config.PESAN, data.getDataString(Config.PESAN));
+                                //Toast.makeText(getApplicationContext(), "Hafalan Belum Selesai", Toast.LENGTH_LONG).show();
                                 startActivity(i);
                                 break;
                         }
@@ -121,21 +127,27 @@ public class ParafSantriActivity extends AppCompatActivity {
         });
         gridView.setEmptyView(imageView);
         gridView.setEmptyView(textViewEmpty);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("Paraf Surah");
     }
 
     private void updateAndShowDataList() {
-        MesosferQuery<MesosferData> query = MesosferData.getQuery("ParafHafalan");
-        query.whereEqualTo(Config.NAMA_SANTRI, namaString);
+        //select * from parafSurah where namaSantri = '?';
+        MesosferQuery<MesosferData> query = MesosferData.getQuery("ParafSurah");
+        //query.whereEqualTo();
+
+
+        // showing a progress dialog loading
+        //loading.setMessage("Loading...");
+        //loading.show();
 
         query.findAsync(new FindCallback<MesosferData>() {
             @Override
             public void done(List<MesosferData> list, MesosferException e) {
+                // hide progress dialog loading
                 loading.dismiss();
 
+                // check if there is an exception happen
                 if (e != null) {
+                    // setup alert dialog builder
                     AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
                     builder.setNegativeButton(android.R.string.ok, null);
                     builder.setTitle("Error Happen");
@@ -147,6 +159,7 @@ public class ParafSantriActivity extends AppCompatActivity {
                     return;
                 }
 
+                // clear all data list
                 mapDataList.clear();
                 listData = new ArrayList<>(list);
                 for (final MesosferData data : list) {
@@ -165,8 +178,7 @@ public class ParafSantriActivity extends AppCompatActivity {
 
                     try {
                         map.put("data", data.toJSON().toString(0));
-                        Log.d("nomor paraf", data.toJSON().toString(0));
-                        SharedPrefManager.getInstance(getApplicationContext()).setData(data.toJSON().toString(1));
+                        Log.d("nomor paraf", data.getDataString("noParaf"));
                     } catch (JSONException e1) {
                         map.put("data", data.toJSON().toString());
                     }
@@ -178,27 +190,5 @@ public class ParafSantriActivity extends AppCompatActivity {
                 customListAdapter.notifyDataSetChanged();
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.paraf_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == android.R.id.home) {
-            finish();
-        } else if (id == R.id.add){
-            Intent intent = new Intent(getApplicationContext(), AddParafActivity.class);
-            intent.putExtra(Config.NAMA_SANTRI, namaString);
-            startActivity(intent);
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }
