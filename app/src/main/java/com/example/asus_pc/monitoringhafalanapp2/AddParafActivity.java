@@ -19,6 +19,7 @@ import com.eyro.mesosfer.SaveCallback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
 import java.util.Locale;
 
 public class AddParafActivity extends AppCompatActivity {
@@ -122,6 +123,7 @@ public class AddParafActivity extends AppCompatActivity {
             data.setData(Config.NAMA_SANTRI, intent.getStringExtra(Config.NAMA_SANTRI));
             data.setData(Config.NAMA_SURAH, surahValue);
             data.setData(Config.NO_PARAF, spinnerValue);
+            data.setData(Config.SELESAI, "0");
 
             data.saveAsync(new SaveCallback() {
                 @Override
@@ -138,9 +140,9 @@ public class AddParafActivity extends AppCompatActivity {
                         return;
                     }
                     Toast.makeText(getApplicationContext(), "Tambah paraf berhasil", Toast.LENGTH_SHORT).show();
-                    Intent intent = getIntent();
+                    //Intent intent = getIntent();
                     finish();
-                    startActivity(intent);
+                    startActivity(new Intent(getApplicationContext(), ListHafalanActivity.class));
                 }
             });
         }

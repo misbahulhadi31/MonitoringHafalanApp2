@@ -101,6 +101,7 @@ public class ParafSantriActivity extends AppCompatActivity {
                                 intent.putExtra(Config.SELESAI, data.getDataString(Config.SELESAI));
                                 intent.putExtra(Config.NO_PARAF, data.getDataString(Config.NO_PARAF));
                                 intent.putExtra(Config.NAMA_SANTRI, namaString);
+                                intent.putExtra("id", data.getObjectId());
                                 startActivity(intent);
                                 break;
                             case 1:
