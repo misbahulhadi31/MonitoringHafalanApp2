@@ -12,6 +12,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eyro.mesosfer.DeleteCallback;
 import com.eyro.mesosfer.FindCallback;
 import com.eyro.mesosfer.MesosferData;
 import com.eyro.mesosfer.MesosferException;
@@ -59,7 +60,7 @@ public class KelolaSantriActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
                 final MesosferData data = listData.get(i);
 
                 final CharSequence[] dialogitem = {"Ubah Data", "Hapus Data"};
@@ -69,6 +70,7 @@ public class KelolaSantriActivity extends AppCompatActivity {
                         switch(item){
                             case 0 :
                                 Intent intent = new Intent(getApplicationContext(), UbahDataActivity.class);
+                                intent.putExtra("id", data.getObjectId());
                                 intent.putExtra(Config.NOMOR_INDUK, data.getDataString(Config.NOMOR_INDUK));
                                 intent.putExtra(Config.NAMA_SANTRI, data.getDataString(Config.NAMA_SANTRI));
                                 intent.putExtra(Config.KELAS, data.getDataString(Config.KELAS));
@@ -83,7 +85,7 @@ public class KelolaSantriActivity extends AppCompatActivity {
                                         .setCancelable(false)
                                         .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int id) {
-                                                Toast.makeText(getApplicationContext(), "Data Berhasil Dihapus", Toast.LENGTH_SHORT).show();
+                                                deleteDataSantri(i);
                                             }
                                         })
                                         .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
@@ -147,6 +149,22 @@ public class KelolaSantriActivity extends AppCompatActivity {
                 }
 
                 adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    private void deleteDataSantri(final int position){
+        final MesosferData data = listData.get(position);
+
+        data.deleteAsync(new DeleteCallback() {
+            @Override
+            public void done(MesosferException e) {
+                if(e != null){
+                    Toast.makeText(KelolaSantriActivity.this, "hapus data santri gagal", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(KelolaSantriActivity.this, "hapus data santri berhasil", Toast.LENGTH_SHORT).show();
+                    updateAndShowDataList();
+                }
             }
         });
     }
