@@ -19,10 +19,10 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText textEmail, textPass, textNama;
+    EditText textEmail, textPass, textNama, textAsal;
     private ProgressDialog loading;
     private AlertDialog dialog;
-    private String email, pass, nama;
+    private String email, pass, nama, asal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,8 @@ public class RegisterActivity extends AppCompatActivity {
         textEmail = (EditText) findViewById(R.id.email);
         textPass = (EditText) findViewById(R.id.pass);
         textNama = (EditText) findViewById(R.id.lengkap);
+        textAsal = (EditText) findViewById(R.id.asall);
+
 
         loading = new ProgressDialog(this);
         loading.setIndeterminate(true);
@@ -44,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         email = textEmail.getText().toString();
         pass = textPass.getText().toString();
         nama = textNama.getText().toString();
+        asal = textAsal.getText().toString();
 
         // validating input values
         if (!isInputValid()) {
@@ -68,6 +71,10 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "Masukkan Nama Lengkap", Toast.LENGTH_SHORT).show();
             return false;
         }
+        if (TextUtils.isEmpty(asal)) {
+            Toast.makeText(this, "Masukkan Asal", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         return true;
     }
 
@@ -84,6 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
         newUser.setFirstName(nama);
         //newUser.setLastName(lastname);
         // set custom field
+        newUser.setData("asal", asal);
         // execute register user asynchronous
         newUser.registerAsync(new RegisterCallback() {
             @Override
