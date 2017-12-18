@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.asus_pc.monitoringhafalanapp2.app.Config;
+
 public class KirimPesanActivity extends AppCompatActivity {
     EditText santri,surah, wali, nomor, pesan;
     Button kirim;

@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.asus_pc.monitoringhafalanapp2.app.Config;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

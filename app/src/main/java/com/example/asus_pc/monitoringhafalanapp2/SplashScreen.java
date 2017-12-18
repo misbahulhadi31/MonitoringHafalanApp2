@@ -17,11 +17,9 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent mainIntent = new Intent(SplashScreen.this, MainMenuActivity.class);
+                Intent mainIntent = new Intent(SplashScreen.this, LoginActivity.class);
                 SplashScreen.this.startActivity(mainIntent);
                 SplashScreen.this.finish();
-                Toast.makeText(getApplicationContext(), "Assalamu'alaikum, ustad",
-                        Toast.LENGTH_SHORT).show();
             }
         }, SPLASH_DISPLAY_LENGTH);
     }

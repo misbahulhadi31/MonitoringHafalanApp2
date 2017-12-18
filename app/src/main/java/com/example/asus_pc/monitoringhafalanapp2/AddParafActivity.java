@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.asus_pc.monitoringhafalanapp2.app.Config;
 import com.eyro.mesosfer.MesosferData;
 import com.eyro.mesosfer.MesosferException;
 import com.eyro.mesosfer.SaveCallback;
@@ -19,7 +20,6 @@ import com.eyro.mesosfer.SaveCallback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Date;
 import java.util.Locale;
 
 public class AddParafActivity extends AppCompatActivity {
@@ -110,8 +110,8 @@ public class AddParafActivity extends AppCompatActivity {
             case "Paraf 12":
                 surahValue = "Tahlil";
                 break;
-            default:
-                surahValue = "zonk";
+            case "Paraf 13":
+                surahValue = "Apa lu";
                 break;
         }
 
@@ -139,7 +139,7 @@ public class AddParafActivity extends AppCompatActivity {
                         );
                         return;
                     }
-                    Toast.makeText(getApplicationContext(), "Tambah paraf berhasil", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Tambah paraf berhasil", Toast.LENGTH_SHORT).show();
                     //Intent intent = getIntent();
                     finish();
                     startActivity(new Intent(getApplicationContext(), ListHafalanActivity.class));

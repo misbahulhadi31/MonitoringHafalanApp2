@@ -1,4 +1,4 @@
-package com.example.asus_pc.monitoringhafalanapp2;
+package com.example.asus_pc.monitoringhafalanapp2.app;
 
 /**
  * Created by ASUS-PC on 13/11/2017.

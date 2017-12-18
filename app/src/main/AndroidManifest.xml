@@ -3,7 +3,7 @@
     package="com.example.asus_pc.monitoringhafalanapp2">
 
     <application
-        android:name=".mesosfer"
+        android:name=".app.mesosfer"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Monitoring Hafalan Qur&apos;an"
@@ -30,7 +30,9 @@
         <activity android:name=".DetailParafActivity" />
         <activity android:name=".ListHafalanActivity" />
         <activity android:name=".LihatParafActivity" />
-        <activity android:name=".AddParafActivity"></activity>
+        <activity android:name=".AddParafActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity"></activity>
     </application>
 
 </manifest>

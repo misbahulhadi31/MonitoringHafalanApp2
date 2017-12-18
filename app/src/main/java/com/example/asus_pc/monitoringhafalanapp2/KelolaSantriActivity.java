@@ -12,6 +12,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.asus_pc.monitoringhafalanapp2.app.Config;
 import com.eyro.mesosfer.DeleteCallback;
 import com.eyro.mesosfer.FindCallback;
 import com.eyro.mesosfer.MesosferData;
@@ -36,6 +37,12 @@ public class KelolaSantriActivity extends AppCompatActivity {
     private static final String[] from = new String[] {"noInduk","namaSantri"};
     private List<MesosferData> listData;
     private TextView textViewEmpty;
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(KelolaSantriActivity.this, MainMenuActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,7 +169,7 @@ public class KelolaSantriActivity extends AppCompatActivity {
                 if(e != null){
                     Toast.makeText(KelolaSantriActivity.this, "hapus data santri gagal", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(KelolaSantriActivity.this, "hapus data santri berhasil", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(KelolaSantriActivity.this, "data berhasil dihapus", Toast.LENGTH_SHORT).show();
                     updateAndShowDataList();
                 }
             }

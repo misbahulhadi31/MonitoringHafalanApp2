@@ -2,15 +2,16 @@ package com.example.asus_pc.monitoringhafalanapp2;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.asus_pc.monitoringhafalanapp2.app.Config;
 import com.eyro.mesosfer.GetCallback;
 import com.eyro.mesosfer.MesosferData;
 import com.eyro.mesosfer.MesosferException;
@@ -56,7 +57,12 @@ public class UbahDataActivity extends AppCompatActivity {
                         .setCancelable(false)
                         .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                updateDataSantri(objectId);
+                                if (!isInputValid()) {
+                                    // return if there is an invalid input
+                                    return;
+                                }else {
+                                    updateDataSantri(objectId);
+                                }
                             }
                         })
                         .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
@@ -102,7 +108,7 @@ public class UbahDataActivity extends AppCompatActivity {
                         if (e != null){
                             Toast.makeText(UbahDataActivity.this, "update data santri gagal", Toast.LENGTH_SHORT).show();
                         } else {
-                                Toast.makeText(getApplicationContext(), "update data santri berhasil", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "data berhasil diubah", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(UbahDataActivity.this, KelolaSantriActivity.class);
                                 startActivity(intent);
                         }
@@ -110,5 +116,34 @@ public class UbahDataActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private boolean isInputValid() {
+        // validating all input values if it is empty
+        if (TextUtils.isEmpty(text1.getText().toString())) {
+            Toast.makeText(this, "Isi nomor Induk", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (TextUtils.isEmpty(text2.getText().toString())) {
+            Toast.makeText(this, "Isi nama Santri", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (TextUtils.isEmpty(text3.getText().toString())) {
+            Toast.makeText(this, "Isi kelas", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (TextUtils.isEmpty(text4.getText().toString())) {
+            Toast.makeText(this, "Isi konsulat", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (TextUtils.isEmpty(text5.getText().toString())) {
+            Toast.makeText(this, "Isi nama wali", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (TextUtils.isEmpty(text6.getText().toString())) {
+            Toast.makeText(this, "Isi nomor telepon", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }

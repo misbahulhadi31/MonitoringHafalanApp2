@@ -73,27 +73,27 @@ public class TambahSantriActivity extends AppCompatActivity {
     private boolean isInputValid() {
         // validating all input values if it is empty
         if (TextUtils.isEmpty(noIndukString)) {
-            Toast.makeText(this, "Isi nomor Induk", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Masukkan nomor Induk", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (TextUtils.isEmpty(namaSantriString)) {
-            Toast.makeText(this, "Isi nama Santri", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Masukkan nama Santri", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (TextUtils.isEmpty(kelasString)) {
-            Toast.makeText(this, "Isi kelas", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Masukkan kelas", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (TextUtils.isEmpty(konsulatString)) {
-            Toast.makeText(this, "Isi konsulat", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Masukkan konsulat", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (TextUtils.isEmpty(namaWaliString)) {
-            Toast.makeText(this, "Isi nama wali", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Masukkan nama wali", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (TextUtils.isEmpty(noTelpString)) {
-            Toast.makeText(this, "Isi nomor telepon", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Masukkan nomor telepon", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -123,7 +123,7 @@ public class TambahSantriActivity extends AppCompatActivity {
                 // setup alert dialog builder
                 AlertDialog.Builder builder = new AlertDialog.Builder(TambahSantriActivity.this);
                 builder.setNegativeButton(android.R.string.ok, null);
-                Toast.makeText(getApplicationContext(), "Data telah disimpan", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Data berhasil ditambah", Toast.LENGTH_SHORT).show();
 
                 // check if there is an exception happen
                 if (e != null) {

@@ -7,19 +7,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.asus_pc.monitoringhafalanapp2.app.Config;
 import com.eyro.mesosfer.FindCallback;
 import com.eyro.mesosfer.MesosferData;
 import com.eyro.mesosfer.MesosferException;
 import com.eyro.mesosfer.MesosferQuery;
-import com.eyro.mesosfer.SaveCallback;
 
 import org.json.JSONException;
 
@@ -43,7 +45,7 @@ public class ParafSantriActivity extends AppCompatActivity {
     private TextView textViewEmpty;
     private ImageView imageView;
     private CustomListAdapter customListAdapter;
-
+    private MesosferData data;
     private static final String TAG = ParafSantriActivity.class.getSimpleName();
 
     @Override
@@ -91,9 +93,9 @@ public class ParafSantriActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final MesosferData data = listData.get(i);
+                data = listData.get(i);
                 //Toast.makeText(ParafSantriActivity.this, ""+data.getDataString("selesai"), Toast.LENGTH_SHORT).show();
-                final CharSequence[] dialogitem = {"Cek Paraf", "Kirim Pesan"};
+                final CharSequence[] dialogitem = {"Isi Paraf", "Kirim Pesan"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(ParafSantriActivity.this);
                 builder.setItems(dialogitem, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int item) {
@@ -106,6 +108,7 @@ public class ParafSantriActivity extends AppCompatActivity {
                                 intent.putExtra(Config.SELESAI, data.getDataString(Config.SELESAI));
                                 intent.putExtra(Config.NO_PARAF, data.getDataString(Config.NO_PARAF));
                                 intent.putExtra(Config.NAMA_SANTRI, namaString);
+                                intent.putExtra("id", data.getObjectId());
                                 //parafSurah();
                                 startActivity(intent);
                                 break;
@@ -127,11 +130,15 @@ public class ParafSantriActivity extends AppCompatActivity {
         });
         gridView.setEmptyView(imageView);
         gridView.setEmptyView(textViewEmpty);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Paraf Surah");
     }
 
     private void updateAndShowDataList() {
         //select * from parafSurah where namaSantri = '?';
-        MesosferQuery<MesosferData> query = MesosferData.getQuery("ParafSurah");
+        MesosferQuery<MesosferData> query = MesosferData.getQuery("ParafHafalan");
+        query.whereEqualTo(Config.NAMA_SANTRI, namaString);
         //query.whereEqualTo();
 
 
@@ -190,5 +197,27 @@ public class ParafSantriActivity extends AppCompatActivity {
                 customListAdapter.notifyDataSetChanged();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.paraf_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            finish();
+        } else if (id == R.id.add){
+            Intent intent = new Intent(getApplicationContext(), AddParafActivity.class);
+            intent.putExtra(Config.NAMA_SANTRI, namaString);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

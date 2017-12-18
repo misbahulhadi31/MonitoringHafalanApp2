@@ -1,4 +1,4 @@
-package com.example.asus_pc.monitoringhafalanapp2;
+package com.example.asus_pc.monitoringhafalanapp2.app;
 
 import android.app.Application;
 
