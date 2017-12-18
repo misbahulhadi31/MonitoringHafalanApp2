@@ -32,7 +32,8 @@
         <activity android:name=".LihatParafActivity" />
         <activity android:name=".AddParafActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".RegisterMuhtarActivity"></activity>
     </application>
 
 </manifest>

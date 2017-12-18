@@ -12,10 +12,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.asus_pc.monitoringhafalanapp2.app.SessionManager;
+import com.eyro.mesosfer.FindCallback;
 import com.eyro.mesosfer.LogInCallback;
+import com.eyro.mesosfer.MesosferData;
 import com.eyro.mesosfer.MesosferException;
+import com.eyro.mesosfer.MesosferQuery;
 import com.eyro.mesosfer.MesosferUser;
 
+import java.util.List;
 import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
@@ -24,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog loading;
     private AlertDialog dialog;
     private SessionManager session;
+    private Button masuk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         textEmail = (EditText) findViewById(R.id.email);
         textPass = (EditText) findViewById(R.id.pass);
         regis = (Button) findViewById(R.id.daftar);
+        masuk = (Button) findViewById(R.id.masuk);
 
         loading = new ProgressDialog(this);
         loading.setIndeterminate(true);
@@ -68,6 +74,37 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
+            }
+        });
+
+        masuk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkLogin();
+            }
+        });
+    }
+
+    private void checkLogin() {
+        final String strWhereEmail = textEmail.getText().toString();
+        final String strWherePass = textPass.getText().toString();
+        MesosferQuery<MesosferData> query = MesosferData.getQuery("Ustad");
+        query.whereEqualTo("email", strWhereEmail);
+        query.whereEqualTo("password", strWherePass);
+
+        query.findAsync(new FindCallback<MesosferData>() {
+            @Override
+            public void done(List<MesosferData> list, MesosferException e) {
+
+                if (e != null) {
+                    Toast.makeText(LoginActivity.this, "gagal fetch data login", Toast.LENGTH_SHORT).show();
+                }
+                if (list.size() == 0) {
+                    Toast.makeText(LoginActivity.this, "email atau password anda salah", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), MainMenuActivity.class));
+                }
             }
         });
     }

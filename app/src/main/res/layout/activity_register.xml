@@ -68,7 +68,6 @@
         android:layout_below="@+id/lengkap"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:onClick="handleRegister"
         android:text="Register" />
 
 </RelativeLayout>
