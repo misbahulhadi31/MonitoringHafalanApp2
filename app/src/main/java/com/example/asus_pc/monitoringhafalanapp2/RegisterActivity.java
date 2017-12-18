@@ -10,19 +10,21 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.eyro.mesosfer.MesosferData;
 import com.eyro.mesosfer.MesosferException;
 import com.eyro.mesosfer.MesosferUser;
 import com.eyro.mesosfer.RegisterCallback;
+import com.eyro.mesosfer.SaveCallback;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText textEmail, textPass, textNama, textAsal;
+    EditText textEmail, textPass, textNama;
     private ProgressDialog loading;
     private AlertDialog dialog;
-    private String email, pass, nama, asal;
+    private String email, pass, nama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +34,6 @@ public class RegisterActivity extends AppCompatActivity {
         textEmail = (EditText) findViewById(R.id.email);
         textPass = (EditText) findViewById(R.id.pass);
         textNama = (EditText) findViewById(R.id.lengkap);
-        textAsal = (EditText) findViewById(R.id.asall);
-
 
         loading = new ProgressDialog(this);
         loading.setIndeterminate(true);
@@ -46,7 +46,6 @@ public class RegisterActivity extends AppCompatActivity {
         email = textEmail.getText().toString();
         pass = textPass.getText().toString();
         nama = textNama.getText().toString();
-        asal = textAsal.getText().toString();
 
         // validating input values
         if (!isInputValid()) {
@@ -71,10 +70,6 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "Masukkan Nama Lengkap", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (TextUtils.isEmpty(asal)) {
-            Toast.makeText(this, "Masukkan Asal", Toast.LENGTH_SHORT).show();
-            return false;
-        }
         return true;
     }
 
@@ -84,16 +79,18 @@ public class RegisterActivity extends AppCompatActivity {
         loading.show();
 
         // create new instance of Mesosfer User
-        MesosferUser newUser = MesosferUser.createUser();
+        MesosferData data = MesosferData.createData("Ustad");
         // set default field
-        newUser.setEmail(email);
-        newUser.setPassword(pass);
-        newUser.setFirstName(nama);
-        //newUser.setLastName(lastname);
+//        newUser.setEmail(email);
+//        newUser.setPassword(pass);
+//        newUser.setFirstName(nama);
+//        newUser.setLastName(lastname);
         // set custom field
-        newUser.setData("asal", asal);
+        data.setData("email", email);
+        data.setData("password", pass);
+        data.setData("namaUstad", nama);
         // execute register user asynchronous
-        newUser.registerAsync(new RegisterCallback() {
+        data.saveAsync(new SaveCallback() {
             @Override
             public void done(MesosferException e) {
                 // hide progress dialog loading
@@ -102,7 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
                 // setup alert dialog builder
                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                 builder.setNegativeButton(android.R.string.ok, null);
-                Toast.makeText(getApplicationContext(), "Data berhasil ditambah", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Registrasi Berhasil", Toast.LENGTH_SHORT).show();
 
                 // check if there is an exception happen
                 if (e != null) {
