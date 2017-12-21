@@ -106,9 +106,9 @@ public class UbahDataActivity extends AppCompatActivity {
                     @Override
                     public void done(MesosferException e) {
                         if (e != null){
-                            Toast.makeText(UbahDataActivity.this, "update data santri gagal", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UbahDataActivity.this, "Data tidak tersimpan", Toast.LENGTH_SHORT).show();
                         } else {
-                                Toast.makeText(getApplicationContext(), "data berhasil diubah", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Data berhasil diubah", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(UbahDataActivity.this, KelolaSantriActivity.class);
                                 startActivity(intent);
                         }

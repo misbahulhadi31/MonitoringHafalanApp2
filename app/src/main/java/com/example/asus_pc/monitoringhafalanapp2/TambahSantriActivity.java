@@ -13,14 +13,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.eyro.mesosfer.FindCallback;
 import com.eyro.mesosfer.MesosferData;
 import com.eyro.mesosfer.MesosferException;
+import com.eyro.mesosfer.MesosferQuery;
 import com.eyro.mesosfer.MesosferUser;
 import com.eyro.mesosfer.RegisterCallback;
 import com.eyro.mesosfer.SaveCallback;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Locale;
 
 public class TambahSantriActivity extends AppCompatActivity {
@@ -66,8 +69,7 @@ public class TambahSantriActivity extends AppCompatActivity {
             // return if there is an invalid input
             return;
         }
-
-        tambahData();
+        checkNoInduk();
     }
 
     private boolean isInputValid() {
@@ -139,5 +141,22 @@ public class TambahSantriActivity extends AppCompatActivity {
         });
 
         startActivity(new Intent(TambahSantriActivity.this, MainMenuActivity.class));
+    }
+
+    private void checkNoInduk() {
+        final String strWhereNoInduk = text1.getText().toString();
+        MesosferQuery<MesosferData> query = MesosferData.getQuery("Santri");
+        query.whereEqualTo("noInduk", strWhereNoInduk);
+
+        query.findAsync(new FindCallback<MesosferData>() {
+            @Override
+            public void done(List<MesosferData> list, MesosferException e) {
+                if (list.size() == 0) {
+                    tambahData();
+                } else {
+                    Toast.makeText(TambahSantriActivity.this, "Nomor induk sudah ada", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

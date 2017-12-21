@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                 submit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (hak.getText().toString().equals("DARQO3")) {
+                        if (hak.getText().toString().equals("FURIOUS39")) {
                             Toast.makeText(LoginActivity.this, "Akses diterima", Toast.LENGTH_SHORT).show();
                             dialog2.dismiss();
                             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
@@ -80,6 +80,10 @@ public class LoginActivity extends AppCompatActivity {
         masuk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!isInputValid()) {
+                    // return if there is an invalid input
+                    return;
+                }
                 checkLogin();
             }
         });
@@ -95,12 +99,8 @@ public class LoginActivity extends AppCompatActivity {
         query.findAsync(new FindCallback<MesosferData>() {
             @Override
             public void done(List<MesosferData> list, MesosferException e) {
-
-                if (e != null) {
-                    Toast.makeText(LoginActivity.this, "gagal fetch data login", Toast.LENGTH_SHORT).show();
-                }
                 if (list.size() == 0) {
-                    Toast.makeText(LoginActivity.this, "email atau password anda salah", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Email atau Password salah", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), MainMenuActivity.class));
@@ -109,48 +109,16 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void handleLogin(View view) {
-        final String username = textEmail.getText().toString();
-        String password = textPass.getText().toString();
-
-        if (TextUtils.isEmpty(username)) {
-            Toast.makeText(this, "Masukkan Email ", Toast.LENGTH_LONG).show();
-            textEmail.requestFocus();
-            return;
+    private boolean isInputValid() {
+        // validating all input values if it is empty
+        if (TextUtils.isEmpty(textEmail.getText().toString())) {
+            Toast.makeText(this, "Masukkan email", Toast.LENGTH_SHORT).show();
+            return false;
         }
-
-        if (TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Masukkan Password ", Toast.LENGTH_LONG).show();
-            textPass.requestFocus();
-            return;
+        if (TextUtils.isEmpty(textPass.getText().toString())) {
+            Toast.makeText(this, "Masukkan password", Toast.LENGTH_SHORT).show();
+            return false;
         }
-
-        loading.setMessage("Logging in...");
-        loading.show();
-        MesosferUser.logInAsync(username, password, new LogInCallback() {
-            @Override
-            public void done(MesosferUser user, MesosferException e) {
-                loading.dismiss();
-                if (e != null) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                    builder.setTitle("Login Failed");
-                    builder.setMessage(
-                            String.format(Locale.getDefault(), "Error code: %d\nDescription: %s",
-                                    e.getCode(), e.getMessage())
-                    );
-
-                    dialog = builder.show();
-                    return;
-                }
-
-                Toast.makeText(LoginActivity.this, "User logged in...", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
-                startActivity(intent);
-
-                session.createLoginSession(username);
-                finish();
-                //startActivity(new Intent(LoginActivity.this, CommentActivity.class));
-            }
-        });
+        return true;
     }
 }

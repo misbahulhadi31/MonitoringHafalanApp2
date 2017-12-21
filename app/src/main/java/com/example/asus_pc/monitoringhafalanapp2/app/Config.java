@@ -18,5 +18,6 @@ public class Config {
     public static final String CATATAN = "catatan";
     public static final String SELESAI = "selesai";
     public static final String PESAN = "isiPesan";
+    public static final String USTAD = "namaUstad";
 
 }

@@ -56,6 +56,7 @@
         android:layout_alignTop="@+id/monitor"
         android:layout_toEndOf="@+id/monitor" />
 
+
     <TextView
         android:id="@+id/id1"
         android:layout_width="100dp"

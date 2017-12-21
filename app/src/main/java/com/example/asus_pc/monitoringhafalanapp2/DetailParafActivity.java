@@ -27,7 +27,7 @@ import java.util.Locale;
 
 public class DetailParafActivity extends AppCompatActivity {
     EditText text1, text2, text3;
-    private String parafString, namaString, tanggalString, pemarafString, isiCatatanString;
+    private String parafString, namaString, ustadString, tanggalString, pemarafString, isiCatatanString;
     private Date tanggal;
     private Button simpan;
     private CheckBox checkBox;
@@ -55,6 +55,7 @@ public class DetailParafActivity extends AppCompatActivity {
         final Intent intent = getIntent();
         parafString = intent.getStringExtra(Config.NO_PARAF);
         namaString = intent.getStringExtra(Config.NAMA_SANTRI);
+        ustadString = intent.getStringExtra(Config.USTAD);
 
         Log.d("parafString", "Value: " + parafString);
         Log.d("namaString", "Value: " + namaString);

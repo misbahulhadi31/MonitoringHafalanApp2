@@ -80,11 +80,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         // create new instance of Mesosfer User
         MesosferData data = MesosferData.createData("Ustad");
-        // set default field
-//        newUser.setEmail(email);
-//        newUser.setPassword(pass);
-//        newUser.setFirstName(nama);
-//        newUser.setLastName(lastname);
         // set custom field
         data.setData("email", email);
         data.setData("password", pass);

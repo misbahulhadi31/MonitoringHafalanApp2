@@ -103,7 +103,7 @@ public class ParafSantriActivity extends AppCompatActivity {
                             case 0 :
                                 Intent intent = new Intent(getApplicationContext(), DetailParafActivity.class);
                                 intent.putExtra(Config.TANGGAL_PARAF, data.getDataString(Config.TANGGAL_PARAF));
-                                intent.putExtra(Config.NAMA_PEMARAF, data.getDataString(Config.NAMA_PEMARAF));
+                                intent.putExtra(Config.USTAD, data.getDataString(Config.USTAD));
                                 intent.putExtra(Config.CATATAN, data.getDataString(Config.CATATAN));
                                 intent.putExtra(Config.SELESAI, data.getDataString(Config.SELESAI));
                                 intent.putExtra(Config.NO_PARAF, data.getDataString(Config.NO_PARAF));
@@ -117,6 +117,7 @@ public class ParafSantriActivity extends AppCompatActivity {
                                 i.putExtra(Config.NAMA_SANTRI, namaString);
                                 i.putExtra(Config.NAMA_WALI, waliString);
                                 i.putExtra(Config.NO_TELEPON, teleponString);
+                                i.putExtra(Config.NO_PARAF, data.getDataString(Config.NO_PARAF));
                                 i.putExtra(Config.NAMA_SURAH, data.getDataString(Config.NAMA_SURAH));
                                 i.putExtra(Config.PESAN, data.getDataString(Config.PESAN));
                                 //Toast.makeText(getApplicationContext(), "Hafalan Belum Selesai", Toast.LENGTH_LONG).show();

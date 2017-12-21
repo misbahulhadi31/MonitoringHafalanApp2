@@ -42,12 +42,12 @@ public class KirimPesanActivity extends AppCompatActivity {
         santri.setText(namaSantri);
         wali.setText(namaWali);
         nomor.setText(noTelepon);
-        surah.setText(i.getStringExtra(Config.NAMA_SURAH));
+        surah.setText(i.getStringExtra(Config.NO_PARAF));
 
         //pesan.setText(i.getStringExtra(Config.PESAN));
 
         pesan.setText("Assalamu'alaikum Bapak "+wali.getText().toString()+ "\n" +
-                "Alhamduliilah anak bapak " +santri.getText().toString()+" telah menyelesaikan hafalan " +surah.getText().toString()+ "\n" +
+                "Alhamduliilah anak bapak " +santri.getText().toString()+" telah menyelesaikan hafalan surah " +surah.getText().toString()+ "\n" +
                 "Semoga anak bapak bisa mengamalkan hafalan Qur'annya serta dapat menjaga hafalannya, Amiin..");
 
         kirim.setOnClickListener(new View.OnClickListener() {

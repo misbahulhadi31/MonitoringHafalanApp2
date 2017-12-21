@@ -6,8 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.asus_pc.monitoringhafalanapp2.app.Config;
+import com.eyro.mesosfer.MesosferData;
+
+import java.util.List;
+
 public class SplashScreen extends AppCompatActivity {
     private final int SPLASH_DISPLAY_LENGTH = 3000;
+    private List<MesosferData> listData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +24,8 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 Intent mainIntent = new Intent(SplashScreen.this, LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+
                 SplashScreen.this.startActivity(mainIntent);
                 SplashScreen.this.finish();
             }
