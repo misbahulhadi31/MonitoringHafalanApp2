@@ -3,6 +3,7 @@ package com.example.asus_pc.monitoringhafalanapp2;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -73,6 +74,14 @@ public class DetailParafActivity extends AppCompatActivity {
                 updateDataParaf(intent.getStringExtra("id"));
             }
         });
+
+        text1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment dialogFragment = new DatePickerFragment();
+                dialogFragment.show(getSupportFragmentManager(), "datePicker");
+            }
+        });
     }
 
     @Override
@@ -117,8 +126,13 @@ public class DetailParafActivity extends AppCompatActivity {
                 String tanggalParaf = object.optString(Config.TANGGAL_PARAF);
                 String selesai = object.optString(Config.SELESAI);
 
+                if (namaPemaraf.equals("")){
+                    String namaPemarafSession = SharedPreferenceManager.getInstance(getApplicationContext()).getNamaPemaraf();
+                    text2.setText(namaPemarafSession);
+                } else {
+                    text2.setText(namaPemaraf);
+                }
                 text1.setText(tanggalParaf);
-                text2.setText(namaPemaraf);
                 text3.setText(catatan);
 
                 if (selesai.equals("1")) {

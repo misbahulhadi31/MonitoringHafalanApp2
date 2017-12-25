@@ -6,6 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,11 @@ import com.eyro.mesosfer.MesosferException;
 import com.eyro.mesosfer.MesosferQuery;
 import com.eyro.mesosfer.MesosferUser;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -103,6 +109,15 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Email atau Password salah", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
+                    String dataArray = Arrays.toString(list.toArray());
+                    try {
+                        JSONArray jsonArray = new JSONArray(dataArray);
+                        JSONObject row = jsonArray.getJSONObject(0);
+                        String namaPemaraf = row.getString("namaUstad");
+                        SharedPreferenceManager.getInstance(getApplicationContext()).setNamaPemaraf(namaPemaraf);
+                    } catch (JSONException e1) {
+                        e1.printStackTrace();
+                    }
                     startActivity(new Intent(getApplicationContext(), MainMenuActivity.class));
                 }
             }

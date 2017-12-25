@@ -6,12 +6,16 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.asus_pc.monitoringhafalanapp2.app.Config;
 import com.eyro.mesosfer.LogOutCallback;
 import com.eyro.mesosfer.MesosferException;
 import com.eyro.mesosfer.MesosferUser;
@@ -110,5 +114,27 @@ public class MainMenuActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.logout) {
+            SharedPreferenceManager.getInstance(getApplicationContext()).removeNamaPemaraf();
+            Intent mainIntent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(mainIntent);
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

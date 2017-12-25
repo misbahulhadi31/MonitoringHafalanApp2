@@ -23,11 +23,15 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent mainIntent = new Intent(SplashScreen.this, LoginActivity.class);
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-
-                SplashScreen.this.startActivity(mainIntent);
-                SplashScreen.this.finish();
+                if (SharedPreferenceManager.getInstance(getApplicationContext()).getNamaPemaraf().equals("")){
+                    Intent mainIntent = new Intent(SplashScreen.this, LoginActivity.class);
+                    SplashScreen.this.startActivity(mainIntent);
+                    SplashScreen.this.finish();
+                } else {
+                    Intent mainIntent = new Intent(SplashScreen.this, MainMenuActivity.class);
+                    SplashScreen.this.startActivity(mainIntent);
+                    SplashScreen.this.finish();
+                }
             }
         }, SPLASH_DISPLAY_LENGTH);
     }

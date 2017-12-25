@@ -39,12 +39,11 @@ public class TambahSantriActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_santri);
 
-        text1 = (EditText) findViewById(R.id.noInduk);
-        text2 = (EditText) findViewById(R.id.namaSantri);
-        text3 = (EditText) findViewById(R.id.kelas);
-        text4 = (EditText) findViewById(R.id.konsulat);
-        text5 = (EditText) findViewById(R.id.namaWali);
-        text6 = (EditText) findViewById(R.id.noTelp);
+        text1 = findViewById(R.id.noInduk);
+        text2 = findViewById(R.id.namaSantri);
+        text4 = findViewById(R.id.konsulat);
+        text5 = findViewById(R.id.namaWali);
+        text6 = findViewById(R.id.noTelp);
 
         loading = new ProgressDialog(this);
         loading.setIndeterminate(true);
