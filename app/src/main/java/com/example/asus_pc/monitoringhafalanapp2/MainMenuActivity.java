@@ -82,7 +82,7 @@ public class MainMenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //final MesosferData data =listData.get();
                 Intent intent = new Intent(getApplicationContext(), KelolaPassActivity.class);
-                intent.putExtra("id", data.getObjectId());
+                //intent.putExtra("id", data.getObjectId());
                 startActivity(intent);
             }
         });

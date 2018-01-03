@@ -116,7 +116,10 @@ public class LoginActivity extends AppCompatActivity {
                         JSONArray jsonArray = new JSONArray(dataArray);
                         JSONObject row = jsonArray.getJSONObject(0);
                         String namaPemaraf = row.getString("namaUstad");
+                        Log.d("object id", "" + row.getString("objectId"));
                         SharedPreferenceManager.getInstance(getApplicationContext()).setNamaPemaraf(namaPemaraf);
+                        SharedPreferenceManager.getInstance(getApplicationContext()).setObjectId(row.getString("objectId"));
+                        SharedPreferenceManager.getInstance(getApplicationContext()).setEmail(row.getString("email"));
                     } catch (JSONException e1) {
                         e1.printStackTrace();
                     }

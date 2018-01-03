@@ -86,6 +86,8 @@ public class KelolaPassActivity extends AppCompatActivity {
             public void done(MesosferData mesosferData, MesosferException e) {
                 MesosferData.createData("Ustad");
                 mesosferData.setData(Config.PASS, pass2.getText().toString());
+                mesosferData.setData("email", SharedPreferenceManager.getInstance(getApplicationContext()).getEmail());
+                mesosferData.setData("namaUstad", SharedPreferenceManager.getInstance(getApplicationContext()).getNamaPemaraf());
                 mesosferData.saveAsync(new SaveCallback() {
                     @Override
                     public void done(MesosferException e) {
@@ -113,7 +115,7 @@ public class KelolaPassActivity extends AppCompatActivity {
                 if (list.size() == 0) {
                     Toast.makeText(KelolaPassActivity.this, "Password lama salah", Toast.LENGTH_SHORT).show();
                 } else {
-                    updateDataSantri(objectId);
+                    updateDataSantri(SharedPreferenceManager.getInstance(getApplicationContext()).getObjectId());
                 }
             }
         });
