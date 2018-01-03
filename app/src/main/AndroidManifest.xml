@@ -33,7 +33,8 @@
         <activity android:name=".AddParafActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".RegisterMuhtarActivity"></activity>
+        <activity android:name=".RegisterMuhtarActivity" />
+        <activity android:name=".KelolaPassActivity"></activity>
     </application>
 
 </manifest>

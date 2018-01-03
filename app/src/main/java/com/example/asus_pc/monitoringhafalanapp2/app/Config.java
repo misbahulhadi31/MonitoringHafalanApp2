@@ -19,5 +19,6 @@ public class Config {
     public static final String SELESAI = "selesai";
     public static final String PESAN = "isiPesan";
     public static final String USTAD = "namaUstad";
+    public static final String PASS = "password";
 
 }

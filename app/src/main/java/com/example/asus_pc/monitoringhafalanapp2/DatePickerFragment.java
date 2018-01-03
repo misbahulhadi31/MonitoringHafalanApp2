@@ -33,29 +33,29 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
     @Override
     public void onDateSet(DatePicker datePicker, int year, int mont, int day) {
 
-        if (datePicker.getMonth() == 0){
+        if (datePicker.getMonth() == 1){
             strNow = datePicker.getDayOfMonth() + " Januari " + datePicker.getYear();
-        } else if (datePicker.getMonth() == 1){
-            strNow = datePicker.getDayOfMonth() + " Februari " + datePicker.getYear();
         } else if (datePicker.getMonth() == 2){
-            strNow = datePicker.getDayOfMonth() + " Maret " + datePicker.getYear();
+            strNow = datePicker.getDayOfMonth() + " Februari " + datePicker.getYear();
         } else if (datePicker.getMonth() == 3){
-            strNow = datePicker.getDayOfMonth() + " April " + datePicker.getYear();
+            strNow = datePicker.getDayOfMonth() + " Maret " + datePicker.getYear();
         } else if (datePicker.getMonth() == 4){
-            strNow = datePicker.getDayOfMonth() + " Mei " + datePicker.getYear();
+            strNow = datePicker.getDayOfMonth() + " April " + datePicker.getYear();
         } else if (datePicker.getMonth() == 5){
-            strNow = datePicker.getDayOfMonth() + " Juni " + datePicker.getYear();
+            strNow = datePicker.getDayOfMonth() + " Mei " + datePicker.getYear();
         } else if (datePicker.getMonth() == 6){
-            strNow = datePicker.getDayOfMonth() + " Juli " + datePicker.getYear();
+            strNow = datePicker.getDayOfMonth() + " Juni " + datePicker.getYear();
         } else if (datePicker.getMonth() == 7){
-            strNow = datePicker.getDayOfMonth() + " Agustus " + datePicker.getYear();
+            strNow = datePicker.getDayOfMonth() + " Juli " + datePicker.getYear();
         } else if (datePicker.getMonth() == 8){
-            strNow = datePicker.getDayOfMonth() + " September " + datePicker.getYear();
+            strNow = datePicker.getDayOfMonth() + " Agustus " + datePicker.getYear();
         } else if (datePicker.getMonth() == 9){
-            strNow = datePicker.getDayOfMonth() + " Oktober " + datePicker.getYear();
+            strNow = datePicker.getDayOfMonth() + " September " + datePicker.getYear();
         } else if (datePicker.getMonth() == 10){
-            strNow = datePicker.getDayOfMonth() + " November " + datePicker.getYear();
+            strNow = datePicker.getDayOfMonth() + " Oktober " + datePicker.getYear();
         } else if (datePicker.getMonth() == 11){
+            strNow = datePicker.getDayOfMonth() + " November " + datePicker.getYear();
+        } else if (datePicker.getMonth() == 12){
             strNow = datePicker.getDayOfMonth() + " Desember " + datePicker.getYear();
         }
 

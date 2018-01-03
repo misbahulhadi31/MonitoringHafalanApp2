@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asus_pc.monitoringhafalanapp2.app.Config;
@@ -27,7 +28,8 @@ import java.util.Date;
 import java.util.Locale;
 
 public class DetailParafActivity extends AppCompatActivity {
-    EditText text1, text2, text3;
+    EditText text1, text3;
+    TextView text2;
     private String parafString, namaString, ustadString, tanggalString, pemarafString, isiCatatanString;
     private Date tanggal;
     private Button simpan;
@@ -54,6 +56,7 @@ public class DetailParafActivity extends AppCompatActivity {
         checkBox = findViewById(R.id.checkBox);
 
         final Intent intent = getIntent();
+        tanggalString = intent.getStringExtra(Config.TANGGAL_PARAF);
         parafString = intent.getStringExtra(Config.NO_PARAF);
         namaString = intent.getStringExtra(Config.NAMA_SANTRI);
         ustadString = intent.getStringExtra(Config.USTAD);
@@ -132,7 +135,7 @@ public class DetailParafActivity extends AppCompatActivity {
                 } else {
                     text2.setText(namaPemaraf);
                 }
-                text1.setText(tanggalParaf);
+                //text1.setText(tanggalParaf);
                 text3.setText(catatan);
 
                 if (selesai.equals("1")) {
@@ -180,7 +183,7 @@ public class DetailParafActivity extends AppCompatActivity {
                             if (e != null) {
                                 Toast.makeText(DetailParafActivity.this, "update data paraf gagal", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(DetailParafActivity.this, "update data parad berhasil", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DetailParafActivity.this, "Hafalan Telah Disimpan", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(), ListHafalanActivity.class));
                             }
                         }

@@ -17,18 +17,22 @@ import android.widget.Toast;
 
 import com.example.asus_pc.monitoringhafalanapp2.app.Config;
 import com.eyro.mesosfer.LogOutCallback;
+import com.eyro.mesosfer.MesosferData;
 import com.eyro.mesosfer.MesosferException;
 import com.eyro.mesosfer.MesosferUser;
 
+import java.util.List;
 import java.util.Locale;
 
 public class MainMenuActivity extends AppCompatActivity {
-    ImageView tambah, monitor, list;
+    ImageView tambah, monitor, list, pas;
     TextView buka;
     private long lastPressedTime;
     private static final int PERIOD = 2000;
     private ProgressDialog loading;
     private AlertDialog dialog;
+    private List<MesosferData> listData;
+    private MesosferData data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +47,9 @@ public class MainMenuActivity extends AppCompatActivity {
         tambah = findViewById(R.id.tambah);
         monitor = findViewById(R.id.monitor);
         list = findViewById(R.id.list);
+        pas = findViewById(R.id.passw);
         buka = findViewById(R.id.welcome);
+
 
         buka.setText("\"Sebaik-baik kalian adalah yang mempelajari Al-Qur'an dan mengajarkannya.\"[Al-Bukhari]");
 
@@ -67,6 +73,16 @@ public class MainMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainMenuActivity.this, KelolaSantriActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        pas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //final MesosferData data =listData.get();
+                Intent intent = new Intent(getApplicationContext(), KelolaPassActivity.class);
+                intent.putExtra("id", data.getObjectId());
                 startActivity(intent);
             }
         });

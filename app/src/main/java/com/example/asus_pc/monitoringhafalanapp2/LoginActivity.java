@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.asus_pc.monitoringhafalanapp2.app.Config;
 import com.example.asus_pc.monitoringhafalanapp2.app.SessionManager;
 import com.eyro.mesosfer.FindCallback;
 import com.eyro.mesosfer.LogInCallback;
@@ -110,6 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
                     String dataArray = Arrays.toString(list.toArray());
+                    Intent intent = new Intent(getApplicationContext(), KelolaPassActivity.class);
                     try {
                         JSONArray jsonArray = new JSONArray(dataArray);
                         JSONObject row = jsonArray.getJSONObject(0);
